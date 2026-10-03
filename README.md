@@ -1,7 +1,7 @@
 ---
 title: Mock Conference Presentation
 emoji: 🎤
-colorFrom: teal
+colorFrom: green
 colorTo: indigo
 sdk: docker
 app_port: 7860
