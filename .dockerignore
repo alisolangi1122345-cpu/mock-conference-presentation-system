@@ -1,0 +1,10 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+recordings/
+output/
+.git/
+.github/
+.vscode/
+.idea/

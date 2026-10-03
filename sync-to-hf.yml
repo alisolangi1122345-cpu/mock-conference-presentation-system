@@ -1,0 +1,29 @@
+# Copy this file to  .github/workflows/sync-to-hf.yml  in your repository.
+# Every push to main is copied to your Hugging Face Space, which then rebuilds.
+#
+# Before it works you must:
+#   1. Replace YOUR_HF_USERNAME and YOUR_SPACE_NAME below.
+#   2. Add a repository secret named HF_TOKEN (a Hugging Face token with Write access).
+
+name: Sync to Hugging Face Space
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # also lets you run it by hand from the Actions tab
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git push --force \
+            https://YOUR_HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/YOUR_HF_USERNAME/YOUR_SPACE_NAME \
+            main
